@@ -14,7 +14,7 @@ jobs:
     - name: Set up PHP
       uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
       with:
-        php-version: '8.0'
+        php-version: '8.2'
 
     - name: Install Composer
       run: curl -sS https://getcomposer.org/installer | php
@@ -28,7 +28,7 @@ jobs:
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
 
     - name: Install Dependencies
-      run: composer install 
+      run: composer install -q --no-ansi --no-interaction --prefer-dist
 
     - name: Generate key
       run: php artisan key:generate
